@@ -1,4 +1,4 @@
-# cy2reposition: Layout reuse in Cytoscape 2
+# cy2reposition: Layout reuse in Cytoscape
 
 **cy2reposition** is an open source Cytoscape 2 Plugin for the reuse of existing Cytoscape network layouts in new Cytoscape projects.
 
@@ -31,6 +31,11 @@ and select the Cytoscape Session file (*.cys) with the layout.
 The positional information from the selected Cytoscape session is applied to the current network. The mapping of the layout is performed based on the xPosition and yPosition associated with the node identifiers. Nodes in the network with no positional information in the selected session file are mapped to standard positions. 
 
 ## Changelog
+**v0.1.0** 
+- sourceforge to github migration
+- logging added
+- libraries updated to Cytoscape 2.8.3
+
 **v0.02** 
 - basic release
 
@@ -39,4 +44,3 @@ The positional information from the selected Cytoscape session is applied to the
 
 ## Uninstall
 * remove `cy2reposition-vx.x.jar` from the Cytoscape Plugin folder
-
