@@ -41,7 +41,7 @@
        <jar destfile="${build}/${name}-${version}.jar">	
         	<manifest>
                 <attribute name="Class-Path" value="."/>
-            	<attribute name="Cytoscape-Plugin" value="cysabiork.CySabioRKPlugin"/>
+            	<attribute name="Cytoscape-Plugin" value="reposition.Reposition"/>
             </manifest>
         	<fileset dir="${src}">
     	    	<include name="reposition/**/*"/>

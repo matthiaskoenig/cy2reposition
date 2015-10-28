@@ -1,32 +1,6 @@
 package reposition;
 
-/*
- Copyright (c) 2015 Matthias Koenig
-
- This library is free software; you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License as published
- by the Free Software Foundation; either version 2.1 of the License, or
- any later version.
-
- This library is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY, WITHOUT EVEN THE IMPLIED WARRANTY OF
- MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  The software and
- documentation provided hereunder is on an "as is" basis, and the
- Institute for Systems Biology and the Whitehead Institute
- have no obligations to provide maintenance, support,
- updates, enhancements or modifications.  In no event shall the
- Institute for Systems Biology and the Whitehead Institute
- be liable to any party for direct, indirect, special,
- incidental or consequential damages, including lost profits, arising
- out of the use of this software and its documentation, even if the
- Institute for Systems Biology and the Whitehead Institute
- have been advised of the possibility of such damage.  See
- the GNU Lesser General Public License for more details.
-
- You should have received a copy of the GNU Lesser General Public License
- along with this library; if not, write to the Free Software Foundation,
- Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
-*/
+/* Copyright (c) 2015 Matthias Koenig */
 
 import giny.view.NodeView;
 
@@ -36,6 +10,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import cysbml.logging.LogCyPlugin;
 import cytoscape.CyEdge;
 import cytoscape.CyNetwork;
 import cytoscape.CyNode;
@@ -48,21 +23,27 @@ import cytoscape.view.CyNetworkView;
 /**
  * Plugin for reuse of available layout information in Session files.
  */
-
 public class Reposition extends CytoscapePlugin {
-    /** SBMLReader2 version */
-	public static final String VERSION = "0.02";
-	/** Debug and testing */
-	public static final boolean debug = false;
+	public static final String NAME = "cy2reposition"; 
+	public static final String VERSION = "v0.1.0";
+	public static LogCyPlugin LOGGER = new LogCyPlugin(NAME);
 	
-	/**
-	 * This constructor creates an action and adds it to the Plugins menu.
-	 */
+	/** Construct the plugin. */
 	public Reposition() {
-	    // Create a new action to respond to menu activation and set in menu
-	    RepositionAction action = new RepositionAction();
-	    action.setPreferredMenu("Plugins");
-	    Cytoscape.getDesktop().getCyMenus().addAction(action);
+		LOGGER.info(getVersionedName());
+		try {		
+		    // Create a new action to respond to menu activation and set in menu
+		    RepositionAction action = new RepositionAction();
+		    action.setPreferredMenu("Plugins");
+		    Cytoscape.getDesktop().getCyMenus().addAction(action);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static String getVersionedName(){
+		return NAME + "-" + VERSION;
 	}
 		
 	@SuppressWarnings("serial")
@@ -73,12 +54,6 @@ public class Reposition extends CytoscapePlugin {
 	    /** This method is called when the user selects the menu item.*/
 	    @SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent ae) {
-	    	// Load the test SBML network on which the layout information should be applied
-	    	// Has to be applied prior to the positional mapping
-	    	if (debug==true){
-		    	String sbmlname = "/home/mkoenig/workspace/reposition/resources/examples/test_anja.sbml";
-		    	Cytoscape.createNetworkFromFile(sbmlname);
-		    }
 	    	
 		    // Test current network has nodes (no empty network allowed)
 	    	// ! getCurrentNetwork() can be different from getCurrentNetworkView
@@ -282,12 +257,9 @@ public class Reposition extends CytoscapePlugin {
 		    //TODO: apply the old visualstyle
 		    // Store the old selected vizmap value and store for reuse
 		    
-		    
-		    
 		    //Apply the visual changes
 		    view.updateView();
 	        view.redrawGraph(true,true);
-	             
 	    }
 	}
 }
