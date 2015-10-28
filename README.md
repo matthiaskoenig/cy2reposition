@@ -1,6 +1,8 @@
-# Reposition-v0.01
+# cy2reposition: Layout reuse in Cytoscape 2
 
-Reposition is an open source Cytoscape 2 Plugin for the reuse of existing Cytoscape network layouts in new Cytoscape projects.
+**cy2reposition** is an open source Cytoscape 2 Plugin for the reuse of existing Cytoscape network layouts in new Cytoscape projects.
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=RYHNRJFBMWD5N" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a>
 
 ## Features
 - reads positional information from given Cytoscape session files for the current network
