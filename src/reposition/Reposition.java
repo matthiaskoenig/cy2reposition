@@ -25,10 +25,10 @@ import cytoscape.view.CyNetworkView;
  */
 public class Reposition extends CytoscapePlugin {
 	public static final String NAME = "cy2reposition"; 
-	public static final String VERSION = "v0.1.0";
+	public static final String VERSION = "v0.1.1";
 	public static LogCyPlugin LOGGER = new LogCyPlugin(NAME);
 	
-	/** Construct the plugin. */
+	/** Construct plugin. */
 	public Reposition() {
 		LOGGER.info(getVersionedName());
 		try {		
